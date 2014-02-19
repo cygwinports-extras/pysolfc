@@ -1,0 +1,26 @@
+inherit python-distutils
+
+NAME="pysolfc"
+VERSION=2.0
+RELEASE=1
+CATEGORY="Games"
+SUMMARY="Collection of solitaire games"
+DESCRIPTION="PySolFC is a collection of more than 1000 solitaire card games.
+Its features include modern look and feel, multiple cardsets and tableau
+backgrounds, sound, unlimited undo, player statistics, a hint system, demo
+games, a solitaire wizard, support for user written plug-ins, an integrated
+HTML help browser, and lots of documentation."
+HOMEPAGE="http://pysolfc.sourceforge.net/"
+SRC_URI="mirror://sourceforge/pysolfc/PySolFC-${VERSION}.tar.bz2"
+SRC_DIR="PySolFC-${VERSION}"
+
+ARCH=noarch
+
+REQUIRES="pysolfc-cardsets"
+
+src_install() {
+	cd ${B}
+	python_distutils_install
+
+	rm -fr ${D}/usr/share/PySolFC/cardset-*
+}
